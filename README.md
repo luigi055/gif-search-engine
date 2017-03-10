@@ -1,1 +1,1 @@
-#React Redux Boilerplate
+#Gif Search Engine

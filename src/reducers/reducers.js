@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
+import gifsReducer from './gifsReducer';
+import modalReducer from './modalReducer';
 
 const reducers = combineReducers({
-  greet: greetReducer,
+  gifs: gifsReducer,
+  modal: modalReducer,
 });
 
-function greetReducer(state = '', action) {
-  return 'Hello, There!';
-}
 export default reducers;
