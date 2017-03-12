@@ -7,7 +7,7 @@ import GifModal from '../components/GifModal';
 
 // `http://api.giphy.com/v1/gifs/search?q=$(encodeURIComponent(term))&api_key=dc6zaTOxFJmzC`
 
-class App extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
   }
@@ -31,11 +31,11 @@ class App extends Component {
   }
 }
 
-App.defaultProps = {
+Home.defaultProps = {
   gifs: [],
 };
 
-App.propTypes = {
+Home.propTypes = {
   gifs: React.PropTypes.array,
 };
 
@@ -47,4 +47,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, actions)(App);
+export default connect(mapStateToProps, actions)(Home);
