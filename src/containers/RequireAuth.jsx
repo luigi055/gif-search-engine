@@ -2,11 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-export default function(WrappedComponent) {
+export default function (WrappedComponent) {
   class Auth extends React.Component {
+
     componentWillMount() {
       if (!this.props.authenticated) {
-        browserHistory.push('/login');
+        let hasLocalStorageUser = false;
+
+        // check if there is the user key token in the localStorage
+        // if it exists then it will be true
+        for (let key in localStorage) {
+          if (key.startsWith("firebase:authUser:")) {
+            hasLocalStorageUser = true;
+          }
+        }
+
+        if (!hasLocalStorageUser) {
+          browserHistory.push('/login');
+        }
       }
     }
 

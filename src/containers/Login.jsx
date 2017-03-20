@@ -40,14 +40,24 @@ class Login extends React.Component {
     </fieldset>
   );
 
+  renderAuthenticationError() {
+    if (this.props.authenticationError) {
+      return <div className="alert alert-danger">{this.props.authenticationError}</div>;
+    }
+    return <div></div>;
+  }
+
   render() {
     return (
       <div className="row">
         <div className="column medium-6 medium-offset-3">
           <h2 className="text-center">Log In</h2>
+
+          {this.renderAuthenticationError()}
+
           <form onSubmit={this.props.handleSubmit(this.handleFormSubmit)}>
-            <Field name="email" component={this.renderField} className="form-control" type="text" label="Email"/>
-            <Field name="password" component={this.renderField} className="form-control" type="password" label="Password"/>
+            <Field name="email" component={this.renderField} className="form-control" type="text" label="Email" />
+            <Field name="password" component={this.renderField} className="form-control" type="password" label="Password" />
 
             <button action="submit" className="button button-primary">Sign In</button>
           </form>
@@ -61,7 +71,13 @@ Login.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
 };
 
-export default connect(null, actions)(reduxForm({
+function mapStateToProps(state) {
+  return {
+    authenticationError: state.auth.error,
+  }
+}
+
+export default connect(mapStateToProps, actions)(reduxForm({
   form: 'login',
   validate
 })(Login));

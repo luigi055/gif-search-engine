@@ -116,6 +116,7 @@ module.exports = {
     clientLogLevel: 'none',
     historyApiFallback: true,
     open: true,
+    // hot: true,
   },
   devtool: 'cheap-module-eval-source-map',
 };
